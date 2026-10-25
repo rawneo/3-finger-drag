@@ -1,0 +1,11 @@
+--- evdev-mt-touchpad-gestures.c.orig	2026-04-02 06:34:12.000000000 +0530
++++ evdev-mt-touchpad-gestures.c	2026-08-22 12:40:52.470065965 +0530
+@@ -42,7 +42,7 @@
+ 
+ #define HOLD_AND_MOTION_THRESHOLD 0.5 /* mm */
+ #define PINCH_DISAMBIGUATION_MOVE_THRESHOLD 1.5 /* mm */
+-#define DRAG_3FG_OR_SWIPE_MOVE_THRESHOLD 5 /* mm */
++#define DRAG_3FG_OR_SWIPE_MOVE_THRESHOLD 1000000 /* mm - PATCHED: 3 fingers ALWAYS drag (4-finger handles swipe) */
+ 
+ enum gesture_event {
+ 	GESTURE_EVENT_RESET,

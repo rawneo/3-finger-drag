@@ -1,0 +1,9 @@
+{
+  "uuid": "threefingerdrag@local",
+  "name": "Three Finger Drag (swipe threshold 4)",
+  "description": "Companion to the libinput 3-finger-drag shim. Filters touchpad swipe events with fewer than 4 fingers in the Clutter capture phase, so 3-finger gestures fall through to libinput's BTN_LEFT drag while 4-finger swipes still switch workspaces.",
+  "shell-version": [
+    "50"
+  ],
+  "version": 2
+}
