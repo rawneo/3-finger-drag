@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <style>
+    .bg    { fill: #0d1117; }
+    .layer { fill: #161b22; stroke: #30363d; }
+    .title { fill: #e6edf3; font-size: 16px; font-weight: 600; }
+    .sub   { fill: #9198a1; font-size: 12.5px; }
+    .flow  { stroke: #6e7681; }
+    .fix   { stroke-width: 1.5; }
+    .fixtx { font-size: 13px; font-weight: 600; }
+    .fixsb { fill: #9198a1; font-size: 12px; }
+    .patch { fill: #2b1a0e; stroke: #f0883e; } .patch-t { fill: #f0883e; }
+    .shim  { fill: #0c2d4a; stroke: #4493f8; } .shim-t  { fill: #4493f8; }
+    .ext   { fill: #271b3f; stroke: #ab7df8; } .ext-t   { fill: #ab7df8; }
+    .ok    { fill: #0f2e1a; stroke: #3fb950; } .ok-t    { fill: #3fb950; }
+    .link  { stroke-dasharray: 4 3; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="sub"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="760" height="470" rx="12"/>
+
+  <!-- stack -->
+  <rect class="layer" x="30" y="24" width="340" height="62" rx="8"/>
+  <text class="title" x="50" y="52">Touchpad</text>
+  <text class="sub"   x="50" y="72">three fingers land and move</text>
+
+  <rect class="layer" x="30" y="122" width="340" height="62" rx="8"/>
+  <text class="title" x="50" y="150">libinput</text>
+  <text class="sub"   x="50" y="170">decides: drag or swipe?</text>
+
+  <rect class="layer" x="30" y="220" width="340" height="62" rx="8"/>
+  <text class="title" x="50" y="248">mutter (inside gnome-shell)</text>
+  <text class="sub"   x="50" y="268">never turns 3-finger drag on</text>
+
+  <rect class="layer" x="30" y="318" width="340" height="62" rx="8"/>
+  <text class="title" x="50" y="346">GNOME swipe tracker</text>
+  <text class="sub"   x="50" y="366">grabs every 3+ finger swipe</text>
+
+  <rect class="ok" x="30" y="410" width="340" height="44" rx="8" stroke-width="1.5"/>
+  <text class="title ok-t" x="50" y="438">✓ window / text / file drag</text>
+
+  <g class="flow" stroke-width="2" marker-end="url(#arr)">
+    <line x1="200" y1="86"  x2="200" y2="120"/>
+    <line x1="200" y1="184" x2="200" y2="218"/>
+    <line x1="200" y1="282" x2="200" y2="316"/>
+    <line x1="200" y1="380" x2="200" y2="408"/>
+  </g>
+
+  <!-- fixes -->
+  <line class="patch link" x1="370" y1="153" x2="410" y2="153"/>
+  <rect class="patch fix" x="410" y="122" width="320" height="62" rx="8"/>
+  <text class="fixtx patch-t" x="428" y="148">① libinput patch</text>
+  <text class="fixsb" x="428" y="168">threshold 5 mm → ∞: 3 fingers always drag</text>
+
+  <line class="shim link" x1="370" y1="251" x2="410" y2="251"/>
+  <rect class="shim fix" x="410" y="220" width="320" height="62" rx="8"/>
+  <text class="fixtx shim-t" x="428" y="246">② LD_PRELOAD shim</text>
+  <text class="fixsb" x="428" y="266">switches libinput's 3-finger drag on</text>
+
+  <line class="ext link" x1="370" y1="349" x2="410" y2="349"/>
+  <rect class="ext fix" x="410" y="318" width="320" height="62" rx="8"/>
+  <text class="fixtx ext-t" x="428" y="344">③ Shell extension</text>
+  <text class="fixsb" x="428" y="364">drops &lt;4-finger swipes; 4 still switch</text>
+</svg>

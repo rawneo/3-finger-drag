@@ -14,6 +14,8 @@ Tested on **Ubuntu 26.04, GNOME Shell 50.1, mutter 18, libinput 1.31.1** on an H
 
 ## The fix
 
+![How the three pieces fit into the input stack](docs/how-it-works.svg)
+
 | Piece | What it does |
 |---|---|
 | [`shim/3fgdrag.c`](shim/3fgdrag.c) | `LD_PRELOAD` library for gnome-shell. It hooks `libinput_device_config_tap_set_enabled()`, which mutter *does* call for every touchpad, and switches 3-finger drag on at the same time. It re-checks the setting every 500 dispatches. |
